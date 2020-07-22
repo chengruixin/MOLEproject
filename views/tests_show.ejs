@@ -1,0 +1,121 @@
+<%- include('partials/header') -%>
+
+<main id="testShowMain">
+<div class="container d-flex">
+    <div class="flex-grow-1">
+    <a :href="backUrl" class="btn btn-primary ml-3 " >Go back</a>
+
+    </div>  
+    <div>
+        <button class="btn btn-secondary p-2 px-3 mr-3" @click="printPDF">Print as PDF</button>
+    </div>  
+</div>
+
+
+<div class="container" id="showTest" v-cloak>
+    <div class="hd-highlight bg-light mt-3 mx-3 p-3">
+        <h2 class="m-0 p-1">
+            Test: <%= data.testName %>
+        </h2>
+        <p class="m-0 p-1">
+            Username: <%= createrInfo.name %>
+        </p>
+        <p class="m-0 p-1">
+            Email : <%= createrInfo.email %>
+        </p>
+    </div>
+    <%  for(var i = 0; i<data.num_questions; i++){ %>
+            
+            <div class="hd-highlight bg-light mb-5 mt-3 mx-3 p-3">
+                <h2 class="mb-4">Question <%= parseInt(i+1) + ": " + data.questions[i].title %> </h2>
+                
+                <% if(data.bestGuess[i] == null) {%>
+                    <p class="text-success">- Best guess: <%= "No best guess produced" %></p>
+                <% } else { %>
+                    <p class="text-success">- Best guess: <%= data.bestGuess[i].toFixed(data.questions[i].sigfig)%></p>
+                <% } %>
+
+                <p>- Initial value range: <%= data.questions[i].STARTING_MIN.toFixed(data.questions[i].sigfig)
+                                                 + 
+                                                 " - " 
+                                                 + 
+                                                data.questions[i].STARTING_MAX.toFixed(data.questions[i].sigfig) %>
+                </p>
+                <p>- Final value range: <%= data.questions[i].min.toFixed(data.questions[i].sigfig) 
+                                                +
+                                                " - " 
+                                                + 
+                                            data.questions[i].max.toFixed(data.questions[i].sigfig) %>
+                </p>
+                <p>- Iterations: <%= data.num_iterations%></p>
+                <p>- Mode: <%= data.mode %></p>
+                <p>- Significant figure: <%= data.questions[i].sigfig %></p>
+                
+                <hr>
+                <!-- show result for each iteration -->
+                <% for(var j = 0; j<data.results[i].length; j++) { %>
+                        <h5>Iteration <%= parseInt(j+1) %>:</h5>
+                        <div class="ml-3">
+                            <p>- Random low value: <%= data.results[i][j].low_value.toFixed(data.questions[i].sigfig) %></p>
+                            <p>- Random high value: <%= data.results[i][j].high_value.toFixed(data.questions[i].sigfig) %></p>
+                            
+                            <% if (data.results[i][j].possibility === 50) { %>
+                                <p>- The closer value: <%= " at middle" %></p>
+                                <p>- Confidence ratings: <%= data.results[i][j].possibility %>%</p>
+                            
+                            <% } else if (data.results[i][j].possibility > 50) { %>
+                                <p>- The closer value: <%= data.results[i][j].high_value.toFixed(data.questions[i].sigfig) %></p>
+                                <p>- Confidence ratings: <%= data.results[i][j].possibility %>%</p>
+                             
+                    
+                            <% } else { %>
+                                <p>- The closer value: <%= data.results[i][j].low_value.toFixed(data.questions[i].sigfig) %></p>
+                                <p>- Confidence ratings: <%= Number(100-data.results[i][j].possibility) %>%</p>
+                            <% } %>
+                            
+                             
+
+                            <p>- Calculated result: 
+                                <% if(data.results[i][j].result == null){ %>
+                                    <%= "Not Calculated (range is being cut) "  %>
+                                <% } else {%> 
+                                    <%= data.results[i][j].result.toFixed(data.questions[i].sigfig) %>
+                                <% } %> 
+                                
+                            </p>
+                        </div>
+                <% } %>
+            </div>
+
+            
+
+
+    <%  } %>
+</div>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+<script>
+    const receivedData =<%-JSON.stringify(data)%>;
+    //console.log(receivedData);
+    const receivedData2 =<%-JSON.stringify(createrInfo)%>;
+    //console.log(receivedData2);
+    var showTest = new Vue({
+        el: "#testShowMain",
+        data : {
+            backUrl : receivedData.creater === userInfo._id ? '/tests' : '/tests?inspectID='+receivedData.creater
+        },
+        methods : {
+            printPDF : function(){
+                const printHTML = document.querySelector("#showTest");
+                console.log(printHTML);
+                const doc = new jsPDF();
+                doc.fromHTML(printHTML, 10, 10);
+                doc.save(`${receivedData.testName}.pdf`);
+            }
+        }
+    });
+</script>
+
+<%- include('partials/footer') -%>

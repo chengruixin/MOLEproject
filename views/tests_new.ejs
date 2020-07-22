@@ -1,0 +1,94 @@
+<%- include('partials/header') -%>
+
+    <div class="container" id="main">
+        
+        <div class="d-flex flex-column align-items-center my-5">
+
+            <div class="alert alert-info rounded-2 instruction text-secondary responsive-width" role="alert" id="instruction">
+                
+                    Two possible values for the parameter are given below. Move the
+                    slider closer to the one you think the true value will be closer to.
+                    The percentage under the slider shows how confident you are this
+                    choice - from 50% (just guessing) to 100% (certain).
+                
+                
+            </div>
+
+
+            <div class="p-5  bg-light rounded bd-shadow responsive-width" id="centerBox">
+            
+                <h2 style="text-align: center;">MOLE Test</h2>
+
+                <div class='form-group row'>
+                    <label class='col-sm-9 col-form-label' for='questions'>Give a name to your test:</label>
+                    <div class='col-sm-3'>
+                        <input class='form-control ' type='text' id='testName' min="1">
+                    </div>
+
+                    <div class="alert alert-warning w-100 rounded-2 p-2 mx-2 my-3 instruction" role="alert" id="testNameAlert">
+                        Notice: You could use you ID number/code
+                    </div>
+                </div>
+
+                <div class='form-group row'>
+                    <label class='col-sm-9 col-form-label' for='questions'>Set number of questions:</label>
+                    <div class='col-sm-3'>
+                        <input class='form-control ' type='number' id='questions' min="1">
+                    </div>
+                </div>
+
+                <div class='form-group row'>
+                    <label class='col-sm-9 col-form-label' for='iterations'>Iterations for each question:</label>
+                    <div class='col-sm-3'>
+                        <input class='form-control ' type='number' id='iterations' min="1">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class='col-sm-9 col-form-label ' for='iterations'>
+                        Select mode: 
+                        <!--<br>
+                        (Please use Strict unless otherwise instructed)-->
+                    </label>
+                    <!--<div class='col-sm-3'>
+                        <input class='form-control text-center' type='number' id='iterations' min="1">
+                    </div>-->
+                    <div class="col-sm-3">
+                        <select class="custom-select form-control" id="mode">
+                            <option value="strict" selected>Strict</option>
+                            <option value="conservative" >Conservative</option>
+                          </select>
+                    </div>
+                   
+
+                    <div class="alert alert-warning w-100 rounded-2 p-2 mx-2 my-3 instruction" role="alert" id="modeAlert">
+                        Notice: Please use strict mode unless otherwise instructed.
+                    </div>
+
+
+
+
+                </div>
+
+                <!--<div class="d-flex justify-content-end ">
+                    <button class='btn btn-primary px-5' id='submit'>submit</button>
+                </div>-->
+                
+                <button class='btn btn-primary ' id='submit'>submit</button>
+        
+                
+            </div>
+
+            <div  id="info" style="display: none;" class="alert alert-danger mt-2 mb-0 responsive-width" role="alert"></div>
+        </div>
+            
+     
+        
+    </div>
+    
+    
+    <script src="/javascripts/test_generate.js"></script>
+    
+    
+  
+    <%- include('partials/footer') -%>

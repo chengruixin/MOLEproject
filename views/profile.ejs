@@ -1,0 +1,196 @@
+<%- include('partials/header') -%>
+
+
+<div class="container" id="profile" v-cloak>
+    <div class="d-flex align-items-center flex-column mt-5" >
+        <div class="text-center my-3">
+            <h3 class="display-5">
+                Profile Info
+            </h3>
+
+            <p class="text-grey">
+                Basic info, like your username, email and password
+            </p>
+        </div>
+        <div class="bg-light responsive-width rounded-1" >
+            <div class="p-4 display-5">
+                Profile
+            </div>
+
+            <!-- show username -->
+            <div class="row pl-4" v-show="isIndex">
+                <label for="username" class="col-4 m-0 py-4">
+                    Username
+                </label>
+
+                <div class="col-8">
+                    <button class="like-a-div" @click="editUsername">
+                        <div class="d-flex justify-content-between align-items-center text-gray w-100 bg-hover-gray py-4 profile-rounded">
+                            <span class="ml-4">
+                                {{username}}
+                            </span>
+                            
+                            <svg class="bi bi-arrow-right mr-4" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10.146 4.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L12.793 8l-2.647-2.646a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                                <path fill-rule="evenodd" d="M2 8a.5.5 0 01.5-.5H13a.5.5 0 010 1H2.5A.5.5 0 012 8z" clip-rule="evenodd"/>
+                            </svg>
+                            
+                        </div>
+                    </button>
+                        
+                   
+                    
+                </div>
+                
+            </div>
+
+            <!-- show editing username selection -->
+            <div v-show="isUsername">
+                <div class="px-4 pb-4">
+                    
+                </div>
+                <div class="px-4 text-grey">
+                    CHANGE NAME
+                </div>
+                
+                <div class="responsive-width-25">
+                    <div class="form-group p-4">
+                        <label for="username"class="text-secondary display-small-1 text-indent-1">Username</label>
+                        <input type="text" class="form-control py-4" v-model="username" id="username">
+                        
+                    </div>
+                </div>
+                
+                <div class="responsive-width-25 d-flex justify-content-end pr-4 pb-4" >
+                    <button class="btn btn-secondary mr-2" @click="toIndex">
+                        Cancel
+                    </button>
+                    <button class="btn btn-primary" @click="changeUsername">Change</button>
+                </div>
+            </div>
+
+
+            <!-- show email -->
+            <div class="row pl-4" v-show="isIndex">
+                <label for="username" class="col-4 m-0 py-4">
+                    Email
+                </label>
+
+                <div class="col-8">
+                    <button class="like-a-div" @click="editEmail">
+                        <div class="d-flex justify-content-between align-items-center text-gray w-100 bg-hover-gray py-4 profile-rounded">
+                            <span class="ml-4">
+                               {{email}}
+                            </span>
+                            
+                            <svg class="bi bi-arrow-right mr-4" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10.146 4.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L12.793 8l-2.647-2.646a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                                <path fill-rule="evenodd" d="M2 8a.5.5 0 01.5-.5H13a.5.5 0 010 1H2.5A.5.5 0 012 8z" clip-rule="evenodd"/>
+                            </svg>
+                            
+                        </div>
+                    </button>
+                    
+                </div>
+
+            </div>
+
+            <!-- show editing email selection -->
+            <div v-show="isEmail">
+                <div class="px-4 pb-4">
+                    
+                </div>
+                <div class="px-4 text-grey">
+                    CHANGE EMAIL
+                </div>
+                
+                <div class="responsive-width-25">
+                    <div class="form-group p-4">
+                        <label for="email"class="text-secondary display-small-1 text-indent-1">Email</label>
+                        <input type="text" class="form-control py-4" v-model="email" id="email">
+                        
+                    </div>
+                </div>
+                
+                <div class="responsive-width-25 d-flex justify-content-end pr-4 pb-4" >
+                    <button class="btn btn-secondary mr-2" @click="toIndex">
+                        Cancel
+                    </button>
+                    <button class="btn btn-primary" @click="changeEmail">Change</button>
+                </div>
+            </div>
+
+
+            <!-- show passowrd -->
+            <div class="row pl-4" v-show="isIndex">
+                <label for="username" class="col-4 m-0 py-4">
+                    Password
+                </label>
+
+                <div class="col-8">
+                    <button class="like-a-div" @click="editPassword">
+                        <div class="d-flex justify-content-between align-items-center text-gray w-100 bg-hover-gray py-4 profile-rounded">
+                            <span class="ml-4">
+                                ******
+                            </span>
+                            
+                            <svg class="bi bi-arrow-right mr-4" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10.146 4.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L12.793 8l-2.647-2.646a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                                <path fill-rule="evenodd" d="M2 8a.5.5 0 01.5-.5H13a.5.5 0 010 1H2.5A.5.5 0 012 8z" clip-rule="evenodd"/>
+                            </svg>
+                            
+                        </div>
+                    </button>
+                    
+                </div>
+                
+            </div>
+
+
+            <!-- show editing password -->
+            <div v-show="isPassword">
+                <div class="px-4 pb-4">
+                    
+                </div>
+                <div class="px-4 text-grey">
+                    CHANGE PASSWORD
+                </div>
+                
+                <div class="responsive-width-25 my-5">
+                    <div class="form-group px-4">
+                        <label for="curPass" class="text-secondary display-small-1 text-indent-1">Current password</label>
+                        <input type="password" class="form-control py-4" v-model="curPass" id="curPass">
+                    </div>
+
+                    <div class="form-group px-4">
+                        <label for="newPass" class="text-secondary display-small-1 text-indent-1">New password</label>
+                        <input type="password" class="form-control py-4" v-model="newPass" id="newPass">
+                    </div>
+                </div>
+                
+                <div class="responsive-width-25 d-flex justify-content-end pr-4 pb-4" >
+                    <button class="btn btn-secondary mr-2" @click="toIndex">
+                        Cancel
+                    </button>
+                    <button class="btn btn-primary" @click="changePassword">Change</button>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="alert responsive-width rounded-2 alert-success m-2 text-center" id="info" v-show="info.length > 0">
+            {{info}}
+        </div>
+    </div>
+</div>
+
+
+<script>
+    const recData = <%- JSON.stringify(data) %>;
+    //console.log(recData);
+    const profileBox = document.querySelector('#box');
+</script>
+
+<script src="/javascripts/profile.js"></script>
+<%- include('partials/footer') -%>

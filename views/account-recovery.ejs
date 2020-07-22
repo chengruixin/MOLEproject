@@ -1,0 +1,34 @@
+<%- include('partials/header') -%>
+
+
+<main id="recovery" v-cloak>
+    <div class="container d-flex flex-column align-items-center">
+        <div class="bg-light recovery responsive-width-30 bd-shadow-2" @keyup.enter="send">
+            <div class="text-center recovery-head">
+                Recovery account
+            </div>
+
+            <div class="form-group recovery-body">
+                <label for="exampleInputEmail1">Email</label>
+                <input type="email" v-model="email" class="form-control py-4" @input="changed">
+
+                <div class="my-3">
+                    <button class="btn btn-success w-100 py-2 mt-4"  @click="send"  :disabled="!isValid || isSending">
+                        <span v-show="!isSending">Send</span>
+                        <img v-show="isSending" class="regular-image" src="/pictures/loading.gif" alt="Loading" >
+                    </button>
+                </div>
+                
+            </div>
+
+            
+        </div>
+
+        <div class="info responsive-width-30 bd-shadow-2 text-center" :class="{'text-white' : success, 'bg-success' : success, 'bg-warning' : fail}">
+            {{info}}
+        </div>
+    </div>
+</main>
+
+<script src="/javascripts/account_recovery.js"></script>
+<%- include('partials/footer') -%>

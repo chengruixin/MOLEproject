@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<!--Fontawesome icons-->
+<!--<script src="https://kit.fontawesome.com/9b8350da32.js" crossorigin="anonymous"></script>-->
+
+<!--Vue-->
+<link rel="stylesheet" href="/stylesheets/app.css">
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<!-- custom methods -->
+<script src="/javascripts/custom_methods.js"></script>
+
+<!-- get user Info -->
+<script>
+     const userInfo = <%- JSON.stringify(userInfo) %>;
+</script>
+
+<title> MOLE </title>
+
+</head>
+
+<body>
+    <nav id="navBar" class="navbar navbar-expand-lg navbar-light bg-light mb-4 bd-shadow-2" v-cloak>
+        <div class="container">
+
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <svg class="bi bi-columns-gap mr-2" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M6 1H1v3h5V1zM1 0a1 1 0 00-1 1v3a1 1 0 001 1h5a1 1 0 001-1V1a1 1 0 00-1-1H1zm14 12h-5v3h5v-3zm-5-1a1 1 0 00-1 1v3a1 1 0 001 1h5a1 1 0 001-1v-3a1 1 0 00-1-1h-5zM6 8H1v7h5V8zM1 7a1 1 0 00-1 1v7a1 1 0 001 1h5a1 1 0 001-1V8a1 1 0 00-1-1H1zm14-6h-5v7h5V1zm-5-1a1 1 0 00-1 1v7a1 1 0 001 1h5a1 1 0 001-1V1a1 1 0 00-1-1h-5z" clip-rule="evenodd"/>
+                  </svg>
+                MOLE
+            </a>
+
+            <!-- main items for the navbar -->
+            <div class="navbar-nav mr-auto">
+
+                <!--<a href="/" class="nav-item nav-link ">
+                    <span class="rounded-bg px-4 py-2 bg-light">
+                        Home
+                    </span>
+                </a>-->
+
+                <a href="/tests/new" class="nav-item nav-link">
+                    <span class="rounded-bg px-4 py-2 bg-light">
+                        Take a test
+                    </span>
+                </a>
+
+                <a href="/tests" class="nav-item nav-link">
+                    <span class="rounded-bg px-4 py-2 bg-light">
+                        My results
+                    </span>
+                </a>
+
+                <a href="/users" class="nav-item nav-link" v-if="isAdmin" >
+                    <span class="rounded-bg px-4 py-2 bg-light">
+                        All users
+                    </span>
+                </a>
+            </div>
+
+           
+                <div  style="color: rgba(0, 0, 0,.7);" v-if="isLoggedIn">
+
+                    <a href="/profile" class="nav-item nav-link text-gray ">
+                        <span class="m-0">
+                            <svg class="bi bi-person-fill" width="1.2em" height="1.2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                            </svg>
+                        </span>
+
+                        <label class="m-0" >
+                            {{username}}  
+                        </label>
+                    
+                    </a>
+                        
+                </div>
+                <a href="/logout" class="btn btn-danger my-2 my-sm-0 ml-2" v-if="isLoggedIn" >Log out</a>
+                <a href="/login" class="btn btn-success my-2 ml-2 my-sm-0 " v-if="!isLoggedIn">Log in</a>
+                <a href="/signup" class="btn btn-primary my-2 my-sm-0 ml-2 " v-if="!isLoggedIn">Sign up</a>
+                
+
+        </div>
+        
+
+    </nav>
+
+    <script>
+        
+        var navControl = new Vue({
+            el: "#navBar",
+            data:{
+                isLoggedIn: userInfo.isLoggedIn,
+                isAdmin : userInfo.role == 'admin' ? true : false,
+                username: userInfo.username
+            }
+            //,
+            //methods:{
+            //    checkStatus : function(){
+            //        this.isLoading = true;
+            //        /////
+            //        let xhttp = new XMLHttpRequest();
+            //        let that = this;
+            //        xhttp.onreadystatechange = function() {
+            //            if (this.readyState == 4) {
+            //                if(this.status == 200){
+            //                    let receivedData = JSON.parse(this.responseText);
+            //                    console.log("Response form POST request to /checkStatus: ", receivedData);
+            //                    //console.log(receivedData);
+            //                    that.isLoading = false;
+            //                    that.isLoggedIn = true;
+            //                    that.username = receivedData.username;
+
+            //                    if(receivedData.role == 'admin'){
+            //                        let adminAccesses = document.querySelectorAll('.adminAccess');
+            //                        adminAccesses.forEach(function(dom){
+            //                            dom.style.display = 'block';
+                                        
+            //                        });
+            //                        //console.log('his is admin');
+            //                    }
+            //                }
+            //                else {
+            //                    console.log("you are not logged in!");
+            //                    console.log(this.responseText);
+            //                    that.isLoading = false
+            //                }
+            //            }
+                        
+            //        };
+            //        xhttp.open("GET", "/checkStatus", true);
+            //        xhttp.send();
+            //        //////
+
+
+            //    }
+            //},
+            ////created: function(){
+            ////    this.checkStatus()
+            ////}
+            //beforeMount(){
+            //    //this.checkStatus();
+            //}
+        })
+    </script>
+
+
+
+
+<!-- above is header (which is the start of each html/ejs file) -->

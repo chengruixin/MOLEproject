@@ -1,0 +1,78 @@
+1. Make instructions on questions larger(done)
+2. Add instructions on mode selection (done)
+    - include "Please use Strict unless otherwise instructed" 
+
+3. During setup, allow users to name their data.(done)
+4. send email to Matthew to see whether issue has
+    been solved.
+
+5. make a flash/indication when users are ready to answer next question(done, by asking people are they ready?)
+
+
+Finish user authentication!!!!(done)
+
+------------user auth ----------------------------
+
+(
+    1. login page turn to homepage (it will turn to last attempt webpage if needed)(done)
+    2. singup page turn to homepage(done)
+    
+)
+
+# user can only see their own results(done)
+# people now can choose which role they want to be(done)
+# Delete button restricted to admin access (done)
+# delete requests should be restricted to admin role (might be done but cannot be tested)
+# delete function should also delete database relation between user and test (done)
+# protect id-specified route by validating the user's id (done)
+# a checkbox to print all results of a user
+# add regular expression validation on signup function
+# show all other users info to admin (done)
+
+
+
+---------------------optimization ----------------
+# change to use ajax to have DELETE request instead of form
+
+
+-----------------------ui improvements -------------------
+# animation for login and singup (done)
+# ui friendly
+# a return button to users is needed
+
+
+---------------------final milestone -------------------------
+// all previous unfinished tasks will be moved to here below.
+
+
+# Mainly are： 
+    1. In result showing page, show cut results when confidence level is at 100%.(neglected)
+    2. Make login validation consistent with signup function.(done)
+    3. Typo: “Ierations” to “Iterations” in tests_show.ejs (done)
+    4. change initial instruction page first section text content to “give a name to your test”.(done)
+    5. Calculate the midpoint of the final range if all results are chosen with 100% confidence level.(done)
+
+# Having a set of checkboxes for users to choose which tests they want to be printed.
+# Implement “Forgot password?” function.
+# Allow users to change they profile, specifically username.(none)
+# Add regular expression validation to signup form and login form(done)
+# A return button for admin to return to users page after they visited one of them.(done)
+# Implement Ajax request for deleting tests (neglected)
+# Hide Nav bar items into side bar when screen size is shrunk to a certain width.
+# 
+    1. Set elements that are initially to be hidden by v-if to “display: none” to minimize the flash effect of showing unwanted elements for a short time.(done)
+    2. to replace ajax request with directly rendering in "all users" and checkstatus.(done)
+
+###################all previous unfinished tasks will be moved down to here ################################
+
+# Having a set of checkboxes for users to choose which tests they want to be printed.(done)
+# Implement “Forgot password?” function.(done)
+# Hide Nav bar items into side bar when screen size is shrunk to a certain width.
+
+Clean up:
+    1. In app.js, move routes to a new folder named “routes”(done)
+    2. Make project code more modular if needed.(done)
+    3. put all password to process.env.(done)
+    4. how to assign admin role when registering??
+
+# add loading.gif to profile 

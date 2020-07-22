@@ -1,0 +1,80 @@
+<%- include('partials/header') -%>
+
+    <div class="container d-flex flex-column align-items-end">
+        <div id="registerForm" class="login-form bg-light  py-4 rounded-2 d-flex justify-content-center bd-shadow responsive-width-25" v-cloak>
+            <div class="w-75 " @keyup.enter="register">
+                <h6 class="h4 text-center mt-0" >Sign up</h6>
+
+                <div class="form-group ">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control py-4" id="username" v-model="username" name="username">
+                    
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email address</label>
+                  <input type="email" class="form-control py-4" id="email" v-model="email" name="email">
+                  
+                </div>
+
+                
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control py-4" id="password" v-model = "password" name="password">
+                </div>
+
+                <div class="form-group">
+                    <label for="passConfirm">Confirm password</label>
+                    <input type="password" class="form-control py-4" id="passConfirm" v-model="password2" name="password2">
+                  </div>
+                
+                <div class="form-group">
+                    <div class="d-flex align-items-center ">
+                        <input class="mr-2" type="checkbox"  v-model='adminIsChecked' id="adminCheck" style="width: 1.2em; height: 1.2em;">
+                        <label class = "m-0" for="adminCheck">You wanna be admin?</label>
+                    </div>
+                </div>
+                    
+
+                <div class="form-group alert-warning p-2 rounded-2 "v-show="infos.length > 0" >
+                    <li class="list-style-none my-1" v-for="item in infos" >{{item}}</li>
+                </div>
+
+                
+                <div class="form-group ">
+                    <!--<button type="submit" class="btn btn-primary w-100" @click="register"></button>-->
+
+                    <button type="submit" class="btn btn-primary w-100" @click="register" :disabled="isRegistering">
+                        
+                        <span v-show="!isRegistering">Create account</span>
+                        <img class="regular-image"src="pictures/loading.gif" alt="Loading" style="display: none;" v-show="isRegistering">
+                    </button>
+
+                </div>
+                
+                <div class="form-group mb-0 ">
+                    <a href="/login"><small>Already got an account? Log in</small></a>
+                </div>
+                
+                
+                
+            </div>
+
+            <!--<div v-if="isRegister" class="w-75 text-center">
+                Create account successfully! Turning to homepage...
+            </div>-->
+        </div>
+
+        <div 
+            id="registerSuccess" 
+            class="form-group bg-success px-3 py-2 rounded-3 responsive-width-25 my-3 text-center" 
+            style="display: none;"
+        >
+            Register successfully! 
+        </div>
+        
+    </div>
+
+    <script src="/javascripts/signup.js"></script>
+    
+<%- include('partials/footer') -%>

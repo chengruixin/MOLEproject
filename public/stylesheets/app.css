@@ -1,0 +1,247 @@
+
+body {
+    background-color:  rgb(239, 240, 241);
+}
+.instruction {
+    font-size: 1rem;
+    display: none;
+}
+
+.small-text {
+    font-size: 0.9rem;
+}
+
+.rounded-bg {
+    border-radius: 1em;
+    transition: 0.1s;
+}
+
+.rounded-1 {
+    border-radius: 1em!important;
+}
+
+.rounded-2 {
+    border-radius: 0.5em!important;
+}
+
+.rounded-3 {
+    border-radius: 0.3em!important;
+}
+.rounded-bg:hover {
+    color: rgb(48, 49, 50);
+    background-color: rgba(180, 186, 189, 1)!important;
+}
+
+
+
+
+.bd-shadow {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05), 0 20px 48px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.bd-shadow-2 {
+    box-shadow: 0 5px 25px rgba(0,0,0,0.05), 0 10px 48px rgba(10,10,10,0.03), 0 1px 4px rgba(10,10,10,0.1);
+}
+
+.responsive-width {
+    max-width: 50rem;
+    width: 100%;
+}
+
+.responsive-width-30 {
+    max-width: 30rem;
+    width: 100%;
+}
+.responsive-width-25 {
+    max-width: 25rem;
+    width: 100%;
+}
+
+.responsive-width-20 {
+    max-width: 20rem;
+    width: 100%;
+}
+
+.responsive-width-15 {
+    max-width: 15rem;
+    width: 100%;
+}
+.w-30 {
+    width: 30%;
+}
+
+.w-35 {
+    width: 35%;
+}
+
+.w-80 {
+    width: 80%;
+}
+
+.w-90 {
+    width: 90%;
+}
+
+.w-95 {
+    width: 95%;
+}
+
+.bg-clip-content {
+    background-clip: content-box;
+}
+
+.border-1 {
+    border: 1px solid black;
+}
+
+.list-style-none {
+    list-style-type: none;
+}
+
+.justify-content-even {
+    justify-content: space-evenly;
+}
+
+.bg-modern {
+    background-color: rgba(121, 187, 204, 0.164);
+}
+
+.text-white {
+    color: aliceblue;
+}
+
+.text-gray {
+    color: rgba(133, 133, 133, 0.801);
+}
+.regular-image {
+    height: 1em;
+    width: 1em;
+}
+
+.text-gray:hover{
+    color: rgba(56, 51, 51, 0.788);
+}
+
+.bt-gray {
+    border-top: rgba(172, 170, 170, 0.404) 1px solid;
+}
+
+.bb-gray {
+    border-bottom: rgba(172, 170, 170, 0.404) 1px solid;
+}
+
+.middle {
+    margin: 0 auto;
+}
+
+.display-5 {
+    font-size: 2em;
+}
+
+.display-small-1{
+    font-size: 0.8em;
+}
+
+.display-small-2 {
+    font-size: 0.6em;
+}
+
+.text-indent-1 {
+    text-indent: 1em;
+}
+.text-indent-2 {
+    text-indent: 2em;
+}
+.text-grey {
+    color:  rgba(56, 51, 51, 0.788);
+}
+
+[v-cloak] {
+    display: none !important;
+}
+
+
+
+.a-special:hover {
+    text-decoration: none;
+}
+
+.bg-hover-gray:hover {
+    background-color: rgba(224, 224, 224, 0.795);
+
+}
+
+.profile-rounded {
+    border-top-left-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+}
+
+.like-a-div {
+    display: block;
+    background: none;
+    border: none;
+    width: 100%;
+    padding: 0;
+    outline: none;
+}
+
+.like-a-div:focus {
+    outline: none;
+   
+}
+
+.pdf-selection {
+    background-color: rgba(219, 219, 219, 0.473);
+    padding: 1em;
+    border-radius: 1em;
+}
+
+.testInfo-box {
+    padding: 0.5em 1em;
+    margin: 0.5em 1em;
+    border-radius: 1em;
+    background-color: silver;
+    border: 1px solid silver;
+
+}
+
+.clicked {
+    border: 3px dashed rgb(76, 138, 58);
+}
+
+
+.recovery {
+    border: 1px solid rgba(192, 192, 192, 0.514);
+    border-radius: 0.2em;
+}
+
+.recovery-head {
+    background-color: rgba(212, 212, 212, 0.479);
+    padding: 1em 2em;
+}
+
+.recovery-head:hover {
+    background-color: rgba(201, 201, 201, 0.5);
+
+}
+
+.recovery-body {
+    padding: 1em 2em;
+    
+}
+
+.info { 
+    border: 1px solid rgba(192, 192, 192, 0.514);
+    background-color: rgba(218, 207, 57, 0.452);
+    padding: 1em;
+    margin: 1em 0;
+    color: rgb(71, 71, 71);
+    border-radius: 0.2em;
+}
+
+.info:hover {
+    background-color: rgba(212, 202, 58, 0.5);
+
+}
