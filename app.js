@@ -20,12 +20,12 @@ app.use(cookieParser());
 dotenv.config();
 
 //Connect to Local MongoDB named MOLE_1
-//mongoose.connect("mongodb://localhost:27017/MOLE_1", 
-//{useNewUrlParser:true, useUnifiedTopology: true}).then(() =>{
+// mongoose.connect("mongodb://localhost:27017/MOLE_1", 
+// {useNewUrlParser:true, useUnifiedTopology: true}).then(() =>{
 //    console.log('Connected to local database\n');
-//}).catch(err =>{
+// }).catch(err =>{
 //    console.log('ERROR: ' + err);
-//});
+// });
 
 // Connect to MongoDB Altas(cloud database)
 mongoose.connect( process.env.MONGODB_URI,{
